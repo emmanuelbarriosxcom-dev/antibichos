@@ -3419,6 +3419,165 @@
           <div class="calendar" id="calendar"></div>
         </div>
         <div class="list-view" id="list-view" hidden></div>
+        
+<section class="tech-tasks" id="tareas-tecnicas" aria-labelledby="tt-heading">
+<style>
+.tech-tasks{margin:26px 0 8px;padding:20px;border:1px solid var(--line);border-radius:var(--radius);background:rgba(13,36,45,.65)}
+.tech-tasks .tt-top{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:10px;margin-bottom:14px}
+.tech-tasks h2{margin:4px 0 0;font-size:22px}
+.tech-tasks .tt-top p{margin:4px 0 0;color:var(--muted);font-size:13px;max-width:640px}
+.tech-tasks .tt-count{font-family:CuboDIN,"Arial Narrow",Arial,sans-serif;color:var(--lime);font-size:14px;letter-spacing:1px;text-transform:uppercase}
+.tech-tasks ol.tt-list{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.tech-tasks .tt-item{border:1px solid var(--line);border-radius:14px;background:var(--surface);padding:12px 14px}
+.tech-tasks .tt-item.done{opacity:.55}
+.tech-tasks .tt-item.done .tt-title b{text-decoration:line-through}
+.tech-tasks .tt-head{display:grid;grid-template-columns:auto auto 1fr auto auto;gap:12px;align-items:center}
+.tech-tasks .tt-num{font-family:CuboDIN,"Arial Narrow",Arial,sans-serif;color:var(--purple);font-weight:700;font-size:15px}
+.tech-tasks .tt-title b{display:block;font-size:14.5px}
+.tech-tasks .tt-title small{display:block;color:var(--muted);font-size:12.5px}
+.tech-tasks .tt-date{font-size:12px;color:var(--quiet);white-space:nowrap}
+.tech-tasks .tt-prio{font-size:11px;font-weight:700;padding:3px 9px;border-radius:99px;white-space:nowrap;border:1px solid}
+.tech-tasks .tt-alta{color:var(--lime);border-color:rgba(215,255,63,.4)}
+.tech-tasks .tt-media{color:var(--cyan);border-color:rgba(46,230,245,.35)}
+.tech-tasks .tt-baja{color:var(--quiet);border-color:var(--line)}
+.tech-tasks .tt-check{position:relative;display:inline-flex;cursor:pointer}
+.tech-tasks .tt-check input{position:absolute;opacity:0;width:20px;height:20px;margin:0;cursor:pointer}
+.tech-tasks .tt-check span{width:20px;height:20px;border-radius:6px;border:1.5px solid var(--quiet);display:inline-block}
+.tech-tasks .tt-check input:checked+span{background:var(--lime);border-color:var(--lime);box-shadow:inset 0 0 0 4px var(--surface)}
+.tech-tasks .tt-check input:focus-visible+span{outline:2px solid var(--lime);outline-offset:3px}
+.tech-tasks details{margin:8px 0 0 66px}
+.tech-tasks summary{cursor:pointer;color:var(--cyan);font-size:12.5px}
+.tech-tasks .tt-steps{margin:8px 0;padding-left:20px;font-size:13px;line-height:1.55}
+.tech-tasks .tt-steps li{margin-bottom:4px}
+.tech-tasks .tt-steps li.tt-plain{list-style:disc}
+.tech-tasks .tt-why{margin:6px 0;font-size:13px;color:var(--text)}
+.tech-tasks .tt-ev{margin:6px 0 0;font-size:11.5px;color:var(--quiet)}
+@media (max-width:640px){
+ .tech-tasks{padding:14px}
+ .tech-tasks .tt-head{grid-template-columns:auto 1fr auto;row-gap:6px}
+ .tech-tasks .tt-num{display:none}
+ .tech-tasks .tt-date{grid-column:2}
+ .tech-tasks details{margin-left:32px}
+}
+@media print{.tech-tasks details{display:block} .tech-tasks details>*{display:block} .tech-tasks{break-before:page}}
+</style>
+<div class="tt-top">
+  <div><div class="eyebrow"><span class="dot"></span>SITIO WEB Y MEDICIÓN</div>
+  <h2 id="tt-heading">Tareas técnicas · noviembre 2026</h2>
+  <p>Ajustes puntuales que salen de los datos de Search Console y GA4. Cambios sutiles: no se tocan URLs ni diseño sin aprobación.</p></div>
+  <span class="tt-count" id="tt-count">0 / 7 hechas</span>
+</div>
+<ol class="tt-list"><li class="tt-item" data-id="ab-2026-11-12-tec-01">
+  <div class="tt-head">
+    <label class="tt-check"><input type="checkbox" data-tt="ab-2026-11-12-tec-01" aria-label="Marcar como hecha: Marcar eventos clave en GA4 y validar el formulario"><span></span></label>
+    <span class="tt-num">01</span>
+    <div class="tt-title"><b>Marcar eventos clave en GA4 y validar el formulario</b><small>Hoy GA4 no tiene eventos clave: no se puede medir bien qué trae ventas.</small></div>
+    <span class="tt-date">jue 12 nov</span>
+    <span class="tt-prio tt-alta">Alta</span>
+  </div>
+  <details><summary>Ver pasos y por qué</summary>
+    <ol class="tt-steps"><li>En GA4 (485308778) marcar como evento clave: clic_whatsapp, clic_telefono y, tras validarlo, envio_formulario.</li><li>Revisar qué dispara envio_formulario (apareció en octubre: 7 eventos en total, 1 orgánico) y si se activa solo cuando el formulario se envía con éxito. Hacer un envío de prueba y verlo en DebugView.</li><li>Revisar qué dispara generate_lead (no prueba un envío).</li><li>Anotar en la ficha qué es cada evento.</li></ol>
+    <p class="tt-why"><b>Por qué:</b> La API devuelve «(not set)» en evento clave y el dashboard maestro muestra 0 conversiones para Anti-Bichos. Sin esto, cada mejora de contenido se mide solo con clics.</p>
+    <p class="tt-why"><b>Resultado esperado:</b> Medir contactos por página desde diciembre.</p>
+    <p class="tt-ev">Fuente: GA4 485308778 vía Windsor, orgánico + IA, 15 oct–11 nov 2026. Dashboard maestro, insight de agencia 09/11/2026.</p>
+  </details>
+</li><li class="tt-item" data-id="ab-2026-11-12-tec-02">
+  <div class="tt-head">
+    <label class="tt-check"><input type="checkbox" data-tt="ab-2026-11-12-tec-02" aria-label="Marcar como hecha: Retomar el log de noviembre y la publicación del 5 de nov"><span></span></label>
+    <span class="tt-num">02</span>
+    <div class="tt-title"><b>Retomar el log de noviembre y la publicación del 5 de nov</b><small>El log termina el 29 de octubre y no hay publicación GBP del 1 al 11 de noviembre.</small></div>
+    <span class="tt-date">jue 12 nov</span>
+    <span class="tt-prio tt-alta">Alta</span>
+  </div>
+  <details><summary>Ver pasos y por qué</summary>
+    <ol class="tt-steps"><li>Confirmar si el jueves 5 de noviembre se hizo artículo o post GBP. En la API de GBP no aparece ninguna publicación del 1–11 nov.</li><li>Registrar en «listado de acciones» cada tarea de este cronograma con fecha y la URL trabajada (hoy el log no trae URLs, por eso no se puede verificar lo publicado).</li><li>Opcional: columna nueva «URL» al lado de «Se hizo?».</li></ol>
+    <p class="tt-why"><b>Por qué:</b> Sin URL en el log, en el reporte mensual los artículos quedan como NO CONFIRMADO.</p>
+    <p class="tt-why"><b>Resultado esperado:</b> Log verificable para el reporte de noviembre.</p>
+    <p class="tt-ev">Fuente: Google Sheet Plan SEO › listado de acciones (última fila: 29 octubre). GBP locations/16411944209374491429: búsquedas de oct 2026 y publicaciones oct; sin publicaciones del 1–11 nov.</p>
+  </details>
+</li><li class="tt-item" data-id="ab-2026-11-19-tec-01">
+  <div class="tt-head">
+    <label class="tt-check"><input type="checkbox" data-tt="ab-2026-11-19-tec-01" aria-label="Marcar como hecha: Revisar URLs raras y posibles 404"><span></span></label>
+    <span class="tt-num">03</span>
+    <div class="tt-title"><b>Revisar URLs raras y posibles 404</b><small>Google muestra URLs que no deberían existir.</small></div>
+    <span class="tt-date">jue 19 nov</span>
+    <span class="tt-prio tt-media">Media</span>
+  </div>
+  <details><summary>Ver pasos y por qué</summary>
+    <ol class="tt-steps"><li>Abrir y revisar: /al/, /h/, /mosc/ (tienen impresiones en GSC) y variantes con errores de escritura de la guía de precios y otros artículos (p. ej. /cuanto-cuesta-una-fumigaciom-…, /cundo-tarda-…, /con-que-calmar-quemadura-de-fumigacion/).</li><li>Si dan 404 o contenido vacío: proponer redirección 301 a la URL correcta (aplicar solo con aprobación).</li><li>Buscar en el sitio enlaces internos rotos que las generen (Screaming Frog).</li><li>Revisar en GSC › Páginas los errores 404 y «rastreada, no indexada».</li></ol>
+    <p class="tt-why"><b>Por qué:</b> En septiembre aparecieron ~10 variantes mal escritas con 1 impresión cada una y en octubre /al/ (29 impr), /h/ (30) y /mosc/ (15). Son pocas, pero limpiar esto evita perder fuerza.</p>
+    <p class="tt-why"><b>Resultado esperado:</b> Sitio sin URLs basura en Google.</p>
+    <p class="tt-ev">Fuente: Search Console (https://anti-bichos.com.mx/) vía Windsor, 15 oct–11 nov 2026, consultado 12/11/2026. Briefing octubre 2026 (1–31 oct vs 1–30 sep).</p>
+  </details>
+</li><li class="tt-item" data-id="ab-2026-11-19-tec-02">
+  <div class="tt-head">
+    <label class="tt-check"><input type="checkbox" data-tt="ab-2026-11-19-tec-02" aria-label="Marcar como hecha: Tráfico raro en GA4: /camiones-de-carga y «(not set)»"><span></span></label>
+    <span class="tt-num">04</span>
+    <div class="tt-title"><b>Tráfico raro en GA4: /camiones-de-carga y «(not set)»</b><small>Hay visitas «orgánicas» de 0 segundos que inflan los números.</small></div>
+    <span class="tt-date">jue 19 nov</span>
+    <span class="tt-prio tt-media">Media</span>
+  </div>
+  <details><summary>Ver pasos y por qué</summary>
+    <ol class="tt-steps"><li>/camiones-de-carga: 9 sesiones orgánicas sin interacción (oct: 18 sesiones de solo 2 usuarios). Revisar ciudad, dispositivo y hora en GA4 para ver si es un bot o pruebas internas.</li><li>«(not set)» como página de entrada: 15 sesiones orgánicas, 0 interacción. Revisar si son sesiones sin page_view.</li><li>Si se confirma bot/interno: filtro de IP o exclusión en GA4 (pedir aprobación).</li></ol>
+    <p class="tt-why"><b>Por qué:</b> Sin limpiar esto, las sesiones orgánicas se ven más altas de lo real y engañan al comparar meses.</p>
+    <p class="tt-why"><b>Resultado esperado:</b> Datos orgánicos limpios para el reporte de noviembre.</p>
+    <p class="tt-ev">Fuente: GA4 485308778 vía Windsor, orgánico + IA, 15 oct–11 nov 2026. Briefing octubre 2026 (1–31 oct vs 1–30 sep).</p>
+  </details>
+</li><li class="tt-item" data-id="ab-2026-11-26-tec-01">
+  <div class="tt-head">
+    <label class="tt-check"><input type="checkbox" data-tt="ab-2026-11-26-tec-01" aria-label="Marcar como hecha: Canibalización en «control de plagas»"><span></span></label>
+    <span class="tt-num">05</span>
+    <div class="tt-title"><b>Canibalización en «control de plagas»</b><small>Un artículo compite con la home por «control de plagas» y pierde.</small></div>
+    <span class="tt-date">jue 26 nov</span>
+    <span class="tt-prio tt-media">Media</span>
+  </div>
+  <details><summary>Ver pasos y por qué</summary>
+    <ol class="tt-steps"><li>/problemas-de-plagas-descubre-los-mejores-servicios-de-fumigacion-en-la-cdmx/ tiene 521 impresiones, posición 38 y 0 clics; aparece para «control de plagas» (88 impr, pos 21.8), donde la home está en posición 1.5.</li><li>Proponer: quitar el enfoque genérico del title de ese artículo (orientarlo a una duda concreta) y enlazarlo a la home con el texto «control de plagas en CDMX».</li><li>Revisar lo mismo con /los-mejores-fumigadores-de-la-ciudad-de-mexico/ (600 impr, pos 29.5) — OJO: esta sí genera contactos (5 clics a WhatsApp), así que no tocar su CTA.</li><li>Revisar /fumigacion-a-domicilio-en-cdmx-…/ (179 impr, pos 66) y /fumigacion-efectiva-en-cdmx-…/ (216 impr, pos 53): candidatos a fusionar en el futuro (solo propuesta, sin cambios este mes).</li></ol>
+    <p class="tt-why"><b>Por qué:</b> Varias páginas antiguas del blog compiten por búsquedas genéricas donde la home ya está arriba. No conviene borrar nada; sí aclarar el tema de cada una.</p>
+    <p class="tt-why"><b>Resultado esperado:</b> Que la home quede sola en las búsquedas genéricas y los artículos en sus dudas.</p>
+    <p class="tt-ev">Fuente: Search Console (https://anti-bichos.com.mx/) vía Windsor, 15 oct–11 nov 2026, consultado 12/11/2026. GA4 485308778 vía Windsor, orgánico + IA, 15 oct–11 nov 2026.</p>
+  </details>
+</li><li class="tt-item" data-id="ab-2026-11-26-tec-02">
+  <div class="tt-head">
+    <label class="tt-check"><input type="checkbox" data-tt="ab-2026-11-26-tec-02" aria-label="Marcar como hecha: Quitar «2025» de títulos (sin tocar URLs)"><span></span></label>
+    <span class="tt-num">06</span>
+    <div class="tt-title"><b>Quitar «2025» de títulos (sin tocar URLs)</b><small>En noviembre de 2026 varios títulos aún dicen 2025.</small></div>
+    <span class="tt-date">jue 26 nov</span>
+    <span class="tt-prio tt-baja">Baja</span>
+  </div>
+  <details><summary>Ver pasos y por qué</summary>
+    <ol class="tt-steps"><li class="tt-plain">Actualizar el año solo en title y H1 (NO en la URL) cuando el contenido se revise de verdad:</li><li class="tt-plain">/certificado-de-fumigacion-cofepris-2025-…/ (440 impr, pos 15.2; 2 clics WhatsApp)</li><li class="tt-plain">/control-de-roedores-en-la-ciudad-de-mexico-…-precios-2025/</li><li class="tt-plain">/fumigacion-con-productos-naturales-vs-quimicos-…-2025/</li><li class="tt-plain">/plagas-mas-comunes-en-cdmx-en-2025-…/ y /tipos-de-plagas-en-la-cdmx-…-en-2025/</li><li class="tt-plain">/chinches-en-el-metro-de-cdmx-2025-…/</li><li class="tt-plain">(La guía de precios y chinches de cama ya van en sus fichas de curación.)</li><li class="tt-plain">Verificar que la plantilla muestre la fecha de actualización.</li></ol>
+    <p class="tt-why"><b>Por qué:</b> Un año viejo en el resultado baja la confianza para clic. Cambiar la URL sí sería riesgoso; el título no.</p>
+    <p class="tt-why"><b>Resultado esperado:</b> Títulos al día en las páginas con impresiones.</p>
+    <p class="tt-ev">Fuente: Search Console (https://anti-bichos.com.mx/) vía Windsor, 15 oct–11 nov 2026, consultado 12/11/2026. Ficha del cliente: conservar URLs salvo redirección aprobada.</p>
+  </details>
+</li><li class="tt-item" data-id="ab-2026-11-26-tec-03">
+  <div class="tt-head">
+    <label class="tt-check"><input type="checkbox" data-tt="ab-2026-11-26-tec-03" aria-label="Marcar como hecha: Reforzar lo que ya vende: /autos/ y páginas por sector"><span></span></label>
+    <span class="tt-num">07</span>
+    <div class="tt-title"><b>Reforzar lo que ya vende: /autos/ y páginas por sector</b><small>/autos/ es la página que más contactos orgánicos trae. Hay que replicar su fórmula.</small></div>
+    <span class="tt-date">jue 26 nov</span>
+    <span class="tt-prio tt-alta">Alta</span>
+  </div>
+  <details><summary>Ver pasos y por qué</summary>
+    <ol class="tt-steps"><li>/autos/: 12 clics, posición 6.1, CTR 5.8 %, y 13 clics a WhatsApp + 6 generate_lead orgánicos en 4 semanas. No cambiar su contenido.</li><li>Enlazar /autos/ desde /agencias-de-autos/, /camiones-de-carga/ y el artículo de transporte (si existe), y desde la home en el bloque de sectores.</li><li>Revisar qué tiene /autos/ (CTA, estructura, fotos) y aplicar ese mismo patrón a /edificios/ (3 clics, CTR 7.7 %) y /escuelas/ (genera contactos): solo CTA y bloques, sin reescribir.</li><li>Revisar que /captura-y-reubicacion-de-fauna/ (CTR 8.8 %, recibe visitas desde ChatGPT) tenga CTA visible.</li></ol>
+    <p class="tt-why"><b>Por qué:</b> Crecer es también hacer más de lo que ya funciona: las páginas por sector convierten mejor que los artículos genéricos.</p>
+    <p class="tt-why"><b>Resultado esperado:</b> Más contactos orgánicos desde páginas de sector.</p>
+    <p class="tt-ev">Fuente: Search Console (https://anti-bichos.com.mx/) vía Windsor, 15 oct–11 nov 2026, consultado 12/11/2026. GA4 485308778 vía Windsor, orgánico + IA, 15 oct–11 nov 2026.</p>
+  </details>
+</li></ol>
+<script>
+(function(){
+  var KEY='anti-bichos-2026-11-v1:tareas-tecnicas';var st={};
+  try{st=JSON.parse(localStorage.getItem(KEY)||'{}')||{};}catch(e){st={};}
+  var boxes=document.querySelectorAll('.tech-tasks input[data-tt]');
+  function paint(){var n=0;boxes.forEach(function(b){var on=!!st[b.dataset.tt];b.checked=on;b.closest('.tt-item').classList.toggle('done',on);if(on)n++;});
+    document.getElementById('tt-count').textContent=n+' / '+boxes.length+' hechas';}
+  boxes.forEach(function(b){b.addEventListener('change',function(){st[b.dataset.tt]=b.checked;try{localStorage.setItem(KEY,JSON.stringify(st));}catch(e){}paint();});});
+  paint();
+})();
+</script>
+</section>
         <footer class="workspace-footer">
           <span><i data-icon="check"></i><span id="footer-context"></span></span
           ><span
@@ -3834,7 +3993,7 @@
   },
   "year": 2026,
   "month": 11,
-  "objective": "Crecer poco a poco sin riesgos: pulir 6 páginas con muchas impresiones y pocos clics, 1 post GBP cada jueves y 7 ajustes técnicos puntuales.",
+  "objective": "Crecer poco a poco sin riesgos: pulir 6 páginas con muchas impresiones y pocos clics y 1 post GBP cada jueves. Ajustes técnicos al final de la página.",
   "publications": [
     {
       "id": "ab-2026-11-12-web-01",
@@ -3926,58 +4085,6 @@
       "imagePrompt": "Pieza para Google Business Profile de Anti-Bichos, cuadrada 1200 × 1200 px. Identidad Anti-Bichos: azul marino #173650, azul cielo #59b9df, rojo #b82e35 y blanco; tipografía Mulish. Logo oficial del Anti-Bichos_Brand-Book.pdf v1.0 (08/10/2026): colocarlo como archivo original, nunca recrearlo con IA. Escena: recámara ordenada de departamento en CDMX; técnico con uniforme azul marino, guantes y linterna revisa la costura de un colchón levantado ligeramente; cabecera de madera al fondo. Sin insectos grandes ni imágenes desagradables. Composición: técnico en mitad derecha, colchón en diagonal; franja inferior de 18 % en azul marino #173650 con el texto exacto «Chinches de cama: revisa estas zonas» en Mulish Bold blanco y el logo oficial a la derecha de la franja (insertar archivo original). Márgenes seguros de 80 px. Luz natural, estilo fotográfico comercial limpio. Revisar legibilidad en móvil.",
       "altText": "Técnico de Anti-Bichos revisa con linterna la costura de un colchón en una recámara.",
       "evidence": "GBP locations/16411944209374491429: búsquedas de oct 2026 y publicaciones oct; sin publicaciones del 1–11 nov. GA4 485308778 vía Windsor, orgánico + IA, 15 oct–11 nov 2026.",
-      "status": "Planeado",
-      "notes": ""
-    },
-    {
-      "id": "ab-2026-11-12-tec-01",
-      "date": "2026-11-12",
-      "theme": "Marcar eventos clave en GA4 y validar el formulario",
-      "category": "Técnico",
-      "service": "Sitio web / medición",
-      "targetAudience": "Equipo Cubo SEO",
-      "localIntent": "No aplica",
-      "customerJourney": "Fidelización",
-      "objective": "Medir contactos por página desde diciembre.",
-      "strategicRationale": "La API devuelve «(not set)» en evento clave y el dashboard maestro muestra 0 conversiones para Anti-Bichos. Sin esto, cada mejora de contenido se mide solo con clics.",
-      "primaryKeyword": "",
-      "secondaryKeywords": [],
-      "hook": "Hoy GA4 no tiene eventos clave: no se puede medir bien qué trae ventas.",
-      "caption": "1. En GA4 (485308778) marcar como evento clave: clic_whatsapp, clic_telefono y, tras validarlo, envio_formulario.\n2. Revisar qué dispara envio_formulario (apareció en octubre: 7 eventos en total, 1 orgánico) y si se activa solo cuando el formulario se envía con éxito. Hacer un envío de prueba y verlo en DebugView.\n3. Revisar qué dispara generate_lead (no prueba un envío).\n4. Anotar en la ficha qué es cada evento.",
-      "cta": "Ejecutar, verificar y marcar en el log",
-      "url": "",
-      "hashtags": "",
-      "imageDirection": "Sin imagen",
-      "imageText": "",
-      "imagePrompt": "No aplica: tarea técnica interna, no lleva pieza visual. No generar imagen.",
-      "altText": "",
-      "evidence": "GA4 485308778 vía Windsor, orgánico + IA, 15 oct–11 nov 2026. Dashboard maestro, insight de agencia 09/11/2026.",
-      "status": "Planeado",
-      "notes": ""
-    },
-    {
-      "id": "ab-2026-11-12-tec-02",
-      "date": "2026-11-12",
-      "theme": "Retomar el log de noviembre y la publicación del 5 de nov",
-      "category": "Técnico",
-      "service": "Sitio web / medición",
-      "targetAudience": "Equipo Cubo SEO",
-      "localIntent": "No aplica",
-      "customerJourney": "Fidelización",
-      "objective": "Log verificable para el reporte de noviembre.",
-      "strategicRationale": "Sin URL en el log, en el reporte mensual los artículos quedan como NO CONFIRMADO.",
-      "primaryKeyword": "",
-      "secondaryKeywords": [],
-      "hook": "El log termina el 29 de octubre y no hay publicación GBP del 1 al 11 de noviembre.",
-      "caption": "1. Confirmar si el jueves 5 de noviembre se hizo artículo o post GBP. En la API de GBP no aparece ninguna publicación del 1–11 nov.\n2. Registrar en «listado de acciones» cada tarea de este cronograma con fecha y la URL trabajada (hoy el log no trae URLs, por eso no se puede verificar lo publicado).\n3. Opcional: columna nueva «URL» al lado de «Se hizo?».",
-      "cta": "Ejecutar, verificar y marcar en el log",
-      "url": "",
-      "hashtags": "",
-      "imageDirection": "Sin imagen",
-      "imageText": "",
-      "imagePrompt": "No aplica: tarea técnica interna, no lleva pieza visual. No generar imagen.",
-      "altText": "",
-      "evidence": "Google Sheet Plan SEO › listado de acciones (última fila: 29 octubre). GBP locations/16411944209374491429: búsquedas de oct 2026 y publicaciones oct; sin publicaciones del 1–11 nov.",
       "status": "Planeado",
       "notes": ""
     },
@@ -4075,58 +4182,6 @@
       "notes": ""
     },
     {
-      "id": "ab-2026-11-19-tec-01",
-      "date": "2026-11-19",
-      "theme": "Revisar URLs raras y posibles 404",
-      "category": "Técnico",
-      "service": "Sitio web / medición",
-      "targetAudience": "Equipo Cubo SEO",
-      "localIntent": "No aplica",
-      "customerJourney": "Fidelización",
-      "objective": "Sitio sin URLs basura en Google.",
-      "strategicRationale": "En septiembre aparecieron ~10 variantes mal escritas con 1 impresión cada una y en octubre /al/ (29 impr), /h/ (30) y /mosc/ (15). Son pocas, pero limpiar esto evita perder fuerza.",
-      "primaryKeyword": "",
-      "secondaryKeywords": [],
-      "hook": "Google muestra URLs que no deberían existir.",
-      "caption": "1. Abrir y revisar: /al/, /h/, /mosc/ (tienen impresiones en GSC) y variantes con errores de escritura de la guía de precios y otros artículos (p. ej. /cuanto-cuesta-una-fumigaciom-…, /cundo-tarda-…, /con-que-calmar-quemadura-de-fumigacion/).\n2. Si dan 404 o contenido vacío: proponer redirección 301 a la URL correcta (aplicar solo con aprobación).\n3. Buscar en el sitio enlaces internos rotos que las generen (Screaming Frog).\n4. Revisar en GSC › Páginas los errores 404 y «rastreada, no indexada».",
-      "cta": "Ejecutar, verificar y marcar en el log",
-      "url": "",
-      "hashtags": "",
-      "imageDirection": "Sin imagen",
-      "imageText": "",
-      "imagePrompt": "No aplica: tarea técnica interna, no lleva pieza visual. No generar imagen.",
-      "altText": "",
-      "evidence": "Search Console (https://anti-bichos.com.mx/) vía Windsor, 15 oct–11 nov 2026, consultado 12/11/2026. Briefing octubre 2026 (1–31 oct vs 1–30 sep).",
-      "status": "Planeado",
-      "notes": ""
-    },
-    {
-      "id": "ab-2026-11-19-tec-02",
-      "date": "2026-11-19",
-      "theme": "Tráfico raro en GA4: /camiones-de-carga y «(not set)»",
-      "category": "Técnico",
-      "service": "Sitio web / medición",
-      "targetAudience": "Equipo Cubo SEO",
-      "localIntent": "No aplica",
-      "customerJourney": "Fidelización",
-      "objective": "Datos orgánicos limpios para el reporte de noviembre.",
-      "strategicRationale": "Sin limpiar esto, las sesiones orgánicas se ven más altas de lo real y engañan al comparar meses.",
-      "primaryKeyword": "",
-      "secondaryKeywords": [],
-      "hook": "Hay visitas «orgánicas» de 0 segundos que inflan los números.",
-      "caption": "1. /camiones-de-carga: 9 sesiones orgánicas sin interacción (oct: 18 sesiones de solo 2 usuarios). Revisar ciudad, dispositivo y hora en GA4 para ver si es un bot o pruebas internas.\n2. «(not set)» como página de entrada: 15 sesiones orgánicas, 0 interacción. Revisar si son sesiones sin page_view.\n3. Si se confirma bot/interno: filtro de IP o exclusión en GA4 (pedir aprobación).",
-      "cta": "Ejecutar, verificar y marcar en el log",
-      "url": "",
-      "hashtags": "",
-      "imageDirection": "Sin imagen",
-      "imageText": "",
-      "imagePrompt": "No aplica: tarea técnica interna, no lleva pieza visual. No generar imagen.",
-      "altText": "",
-      "evidence": "GA4 485308778 vía Windsor, orgánico + IA, 15 oct–11 nov 2026. Briefing octubre 2026 (1–31 oct vs 1–30 sep).",
-      "status": "Planeado",
-      "notes": ""
-    },
-    {
       "id": "ab-2026-11-26-web-01",
       "date": "2026-11-26",
       "theme": "«¿Cuánto tarda en hacer efecto una fumigación?»: respuesta directa + grupo de artículos",
@@ -4215,84 +4270,6 @@
       "imagePrompt": "Pieza para Google Business Profile de Anti-Bichos, cuadrada 1200 × 1200 px. Identidad Anti-Bichos: azul marino #173650, azul cielo #59b9df, rojo #b82e35 y blanco; tipografía Mulish. Logo oficial del Anti-Bichos_Brand-Book.pdf v1.0 (08/10/2026): colocarlo como archivo original, nunca recrearlo con IA. Escena: sala luminosa en CDMX, perro mediano sentado tranquilo junto a su cama; al fondo, técnico con uniforme azul marino y guantes revisa el borde de un tapete. Sin insectos visibles, sin productos químicos en primer plano. Composición: perro en primer plano a la izquierda, técnico desenfocado a la derecha; franja inferior de 18 % en azul marino #173650 con el texto exacto «Pulgas y garrapatas: revisa también la casa» en Mulish Bold blanco y el logo oficial (archivo original) a la derecha. Márgenes seguros de 80 px. Estilo fotográfico comercial cálido. Revisar legibilidad en móvil.",
       "altText": "Perro sentado junto a su cama mientras un técnico de Anti-Bichos revisa el tapete.",
       "evidence": "GBP locations/16411944209374491429: búsquedas de oct 2026 y publicaciones oct; sin publicaciones del 1–11 nov. Search Console (https://anti-bichos.com.mx/) vía Windsor, 15 oct–11 nov 2026, consultado 12/11/2026.",
-      "status": "Planeado",
-      "notes": ""
-    },
-    {
-      "id": "ab-2026-11-26-tec-01",
-      "date": "2026-11-26",
-      "theme": "Canibalización en «control de plagas»",
-      "category": "Técnico",
-      "service": "Sitio web / medición",
-      "targetAudience": "Equipo Cubo SEO",
-      "localIntent": "No aplica",
-      "customerJourney": "Fidelización",
-      "objective": "Que la home quede sola en las búsquedas genéricas y los artículos en sus dudas.",
-      "strategicRationale": "Varias páginas antiguas del blog compiten por búsquedas genéricas donde la home ya está arriba. No conviene borrar nada; sí aclarar el tema de cada una.",
-      "primaryKeyword": "",
-      "secondaryKeywords": [],
-      "hook": "Un artículo compite con la home por «control de plagas» y pierde.",
-      "caption": "1. /problemas-de-plagas-descubre-los-mejores-servicios-de-fumigacion-en-la-cdmx/ tiene 521 impresiones, posición 38 y 0 clics; aparece para «control de plagas» (88 impr, pos 21.8), donde la home está en posición 1.5.\n2. Proponer: quitar el enfoque genérico del title de ese artículo (orientarlo a una duda concreta) y enlazarlo a la home con el texto «control de plagas en CDMX».\n3. Revisar lo mismo con /los-mejores-fumigadores-de-la-ciudad-de-mexico/ (600 impr, pos 29.5) — OJO: esta sí genera contactos (5 clics a WhatsApp), así que no tocar su CTA.\n4. Revisar /fumigacion-a-domicilio-en-cdmx-…/ (179 impr, pos 66) y /fumigacion-efectiva-en-cdmx-…/ (216 impr, pos 53): candidatos a fusionar en el futuro (solo propuesta, sin cambios este mes).",
-      "cta": "Ejecutar, verificar y marcar en el log",
-      "url": "",
-      "hashtags": "",
-      "imageDirection": "Sin imagen",
-      "imageText": "",
-      "imagePrompt": "No aplica: tarea técnica interna, no lleva pieza visual. No generar imagen.",
-      "altText": "",
-      "evidence": "Search Console (https://anti-bichos.com.mx/) vía Windsor, 15 oct–11 nov 2026, consultado 12/11/2026. GA4 485308778 vía Windsor, orgánico + IA, 15 oct–11 nov 2026.",
-      "status": "Planeado",
-      "notes": ""
-    },
-    {
-      "id": "ab-2026-11-26-tec-02",
-      "date": "2026-11-26",
-      "theme": "Quitar «2025» de títulos (sin tocar URLs)",
-      "category": "Técnico",
-      "service": "Sitio web / medición",
-      "targetAudience": "Equipo Cubo SEO",
-      "localIntent": "No aplica",
-      "customerJourney": "Fidelización",
-      "objective": "Títulos al día en las páginas con impresiones.",
-      "strategicRationale": "Un año viejo en el resultado baja la confianza para clic. Cambiar la URL sí sería riesgoso; el título no.",
-      "primaryKeyword": "",
-      "secondaryKeywords": [],
-      "hook": "En noviembre de 2026 varios títulos aún dicen 2025.",
-      "caption": "Actualizar el año solo en title y H1 (NO en la URL) cuando el contenido se revise de verdad:\n- /certificado-de-fumigacion-cofepris-2025-…/ (440 impr, pos 15.2; 2 clics WhatsApp)\n- /control-de-roedores-en-la-ciudad-de-mexico-…-precios-2025/\n- /fumigacion-con-productos-naturales-vs-quimicos-…-2025/\n- /plagas-mas-comunes-en-cdmx-en-2025-…/ y /tipos-de-plagas-en-la-cdmx-…-en-2025/\n- /chinches-en-el-metro-de-cdmx-2025-…/\n(La guía de precios y chinches de cama ya van en sus fichas de curación.)\nVerificar que la plantilla muestre la fecha de actualización.",
-      "cta": "Ejecutar, verificar y marcar en el log",
-      "url": "",
-      "hashtags": "",
-      "imageDirection": "Sin imagen",
-      "imageText": "",
-      "imagePrompt": "No aplica: tarea técnica interna, no lleva pieza visual. No generar imagen.",
-      "altText": "",
-      "evidence": "Search Console (https://anti-bichos.com.mx/) vía Windsor, 15 oct–11 nov 2026, consultado 12/11/2026. Ficha del cliente: conservar URLs salvo redirección aprobada.",
-      "status": "Planeado",
-      "notes": ""
-    },
-    {
-      "id": "ab-2026-11-26-tec-03",
-      "date": "2026-11-26",
-      "theme": "Reforzar lo que ya vende: /autos/ y páginas por sector",
-      "category": "Técnico",
-      "service": "Sitio web / medición",
-      "targetAudience": "Equipo Cubo SEO",
-      "localIntent": "No aplica",
-      "customerJourney": "Fidelización",
-      "objective": "Más contactos orgánicos desde páginas de sector.",
-      "strategicRationale": "Crecer es también hacer más de lo que ya funciona: las páginas por sector convierten mejor que los artículos genéricos.",
-      "primaryKeyword": "",
-      "secondaryKeywords": [],
-      "hook": "/autos/ es la página que más contactos orgánicos trae. Hay que replicar su fórmula.",
-      "caption": "1. /autos/: 12 clics, posición 6.1, CTR 5.8 %, y 13 clics a WhatsApp + 6 generate_lead orgánicos en 4 semanas. No cambiar su contenido.\n2. Enlazar /autos/ desde /agencias-de-autos/, /camiones-de-carga/ y el artículo de transporte (si existe), y desde la home en el bloque de sectores.\n3. Revisar qué tiene /autos/ (CTA, estructura, fotos) y aplicar ese mismo patrón a /edificios/ (3 clics, CTR 7.7 %) y /escuelas/ (genera contactos): solo CTA y bloques, sin reescribir.\n4. Revisar que /captura-y-reubicacion-de-fauna/ (CTR 8.8 %, recibe visitas desde ChatGPT) tenga CTA visible.",
-      "cta": "Ejecutar, verificar y marcar en el log",
-      "url": "",
-      "hashtags": "",
-      "imageDirection": "Sin imagen",
-      "imageText": "",
-      "imagePrompt": "No aplica: tarea técnica interna, no lleva pieza visual. No generar imagen.",
-      "altText": "",
-      "evidence": "Search Console (https://anti-bichos.com.mx/) vía Windsor, 15 oct–11 nov 2026, consultado 12/11/2026. GA4 485308778 vía Windsor, orgánico + IA, 15 oct–11 nov 2026.",
       "status": "Planeado",
       "notes": ""
     }
